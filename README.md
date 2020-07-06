@@ -6,6 +6,33 @@ Port of the mini-gmp library with support for arbitrary-precision integers and r
 
 Currently based on GMP v6.2.0.
 
+Compared to vanilla mini-gmp, this library has the following modifications:
+
+1. In case of error, no error is printed to stderr before aborting
+2. The internal limb type defaults to `unsigned int` (16 bit) instead of `unsigned long` (32 bit), since AVR microcontrollers do not natively support 32-bit multiplication.
+
+## Installing
+
+This library is slated for inclusion in the Arduino library manager. Once included, you will be able to simply add it to your project by going in the library manager and searching for "gmp-ino".
+
+## Usage
+
+Sample usage:
+
+```c
+#include <gmp-ino.h>
+
+mpz_t counter;
+
+void setup() {
+  mpz_init(counter);
+}
+
+void loop() {
+  mpz_add_ui(counter, counter, 1);
+}
+```
+
 ## References
 
 - [GMP website](https://gmplib.org/)
