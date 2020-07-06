@@ -13,7 +13,9 @@ Compared to vanilla mini-gmp, this library has the following modifications:
 
 ## Installing
 
-This library is slated for inclusion in the Arduino library manager. Once included, you will be able to simply add it to your project by going in the library manager and searching for "gmp-ino".
+This library is slated for inclusion in the Arduino library manager. 
+
+Once included, you will be able to simply add it to your project by going in the library manager and searching for "gmp-ino".
 
 ## Usage
 
@@ -29,9 +31,16 @@ void setup() {
 }
 
 void loop() {
-  mpz_add_ui(counter, counter, 1);
+  mpz_add_ui(counter, counter, 1); // equivalent to `counter++`
 }
 ```
+
+Important things to keep in mind:
+
+- always call `mp*_init` before using a variable for the first time
+- always call `mp*_clear` when the contents of a variable are not needed anymore (if you don't, you will quickly exhaust the memory as memory used by the variables is not freed until the call to `mp*_clear`)
+- mini-gmp uses `malloc`/`realloc`/`free` to allocate memory for the arbitrary-precision numbers
+- any internal error during any call (e.g. division by 0, invalid arguments, memory exhausted) will hang your program: validate the arguments before performing calls
 
 ## References
 
