@@ -13,9 +13,7 @@ Compared to vanilla mini-gmp, this library has the following modifications:
 
 ## Installing
 
-This library is slated for inclusion in the Arduino library manager. 
-
-Once included, you will be able to simply add it to your project by going in the library manager and searching for "gmp-ino".
+You can install this library via the built-in library manager in your Arduino IDE (Sketch > Include Library > Manage Libraries...), searching for `gmp-ino` and clicking "Install".
 
 ## Usage
 
